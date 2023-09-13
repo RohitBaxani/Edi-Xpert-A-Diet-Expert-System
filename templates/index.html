@@ -1,0 +1,205 @@
+{% extends 'basic.html' %}
+{% block body %}
+<!-- nav end -->
+{%load static%}
+
+<section class="text-gray-600 body-font custom-hero2">
+    <div class="container flex flex-wrap">
+        <div class="flex flex-wrap w-full">
+            {% comment %} <div class="lg:w-2/5 md:w-1/2 md:pr-10 md:py-6"> {% endcomment %}
+                <div>
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-green-400 inline-flex items-center justify-center text-white relative z-10">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4">
+                        <h2 class="font-medium title-font text-sm text-white-900 mb-1 tracking-wider">STEP 1</h2>
+                        <p class="leading-relaxed">Enter your age, height, weight, Body fat percentage, your target and daily activity. <br> <a href="bodymass">(if you
+                                dont know your body fat percentage then go to body fat percentage calculator
+                                page).</a> </p>
+                    </div>
+                </div>
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-green-400 inline-flex items-center justify-center text-white relative z-10">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4">
+                        <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 2</h2>
+                        <p class="leading-relaxed">Select the food recommended by our model for your diet <br> in Breakfast ,
+                            Lunch .Dinner and then press update button to update your calorie intake.</p>
+                    </div>
+                </div>
+                <div class="flex relative pb-12">
+                    <div class="h-full w-10 absolute inset-0 flex items-center justify-center">
+                        <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
+                    </div>
+                    <div
+                        class="flex-shrink-0 w-10 h-10 rounded-full bg-green-400 inline-flex items-center justify-center text-white relative z-10">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                            <circle cx="12" cy="5" r="3"></circle>
+                            <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-grow pl-4">
+                        <h2 class="font-medium title-font text-sm text-gray-900 mb-1 tracking-wider">STEP 3</h2>
+                        <p class="leading-relaxed">Calorie Calculator will add the calories
+                            you need to eat <br> if your calorie doesn't match  with requirement then add or remove food
+                            <br> according to your condition.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<form onsubmit="/diet" method="POST" class="custom-form">
+    {% csrf_token %}
+    <section class="p-4">
+        <div class="card">
+            <div class="card-header bg-warning">
+                <h4 class="m-0">Info</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="form-row">
+
+                        
+                    <div class="col-md-6 mb-4 form-col">
+                        <label for="exampleFormControlInput1" class="form-label">Age</label>
+                        <input type="number" class="form-control" name="age" id="exampleFormControlInput1"
+                            placeholder="eg. 22,20 etc">
+                    </div>
+                    <!-- <div class="col-md-6 mb-4">
+                            <label for="exampleFormControlInput1" class="form-label">Vegetarian / Non-Vegetarian</label>
+                            <div class="col-md-4">
+                                <input type="radio" name="veg/nonveg" value="0">Veg</input>
+                            </div>
+    
+                            <div class="col-md-4">
+                                <input type="radio" name="veg/nonveg" value="1">Non-Veg</input>
+                            </div>
+                        </div> -->
+                    <div class="col-md-6 mb-4 form-col">
+                        <label for="exampleFormControlInput1" class="form-label">Weight</label>
+                        <input type="number" class="form-control" name="weight" id="exampleFormControlInput1"
+                            placeholder="Enter your weight here (Kg)">
+                    </div>
+                </div>
+<div class="form-row">
+                    <div class="col-md-6 mb-4 form-col">
+                        <label for="exampleFormControlInput1" class="form-label">Height</label>
+                        <input type="number" class="form-control" name="height" id="exampleFormControlInput1"
+                            placeholder="Enter your height here (cm)">
+                    </div>
+                    <div class="col-md-6 mb-4 form-col">
+                        <label for="exampleFormControlInput1" class="form-label">Body fat in percentage</label>
+                        <input type="number" class="form-control" name="bodyfat" id="exampleFormControlInput1"
+                            placeholder="Body fat in percentage" step="any">
+                    </div>
+                </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="row threebuttons card">
+                            <div class="card-header bg-warning">
+                                What do you want to do?
+                            </div>
+                            <div class="card-body checkbox-cont">
+                                <div class="col-md-12">
+                                    <input type="radio" name="goal" value="weight loss">Weight Loss</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="goal" value="healthy" checked>Healthy</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="goal" value="weight gain">Weight Gain</input>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row threebuttons card">
+                            <div class="card-header bg-warning">
+                                How much is your daily activity?
+                            </div>
+                            <div class="card-body checkbox-cont">
+                                <div class="col-md-12">
+                                    <input type="radio" name="activity" value="1.3">Very Light</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="activity" value="1.55">Light</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="activity" value="1.65">Moderate</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="activity" value="1.8" checked>Heavy</input>
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="radio" name="activity" value="2">Very Heavy</input>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row threebuttons card">
+                            <div class="card-header bg-warning">
+                                Define your Gender.
+                            </div>
+                            <div class="card-body checkbox-cont">
+                                <div class="col-md-12">
+                                    <input type="radio" name="gender" value="m">Male</input>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="radio" name="gender" value="f">Female</input>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div style="display: flex; justify-content: center; padding-bottom: 23px;">
+                <input type="submit" value="Recommend" name="b1" class="btn btn-warning bg-green-400" style="color: black;">
+            </div>
+        </div>
+</form>
+</section>
+
+
+<!-- Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+<script type="text/javascript">
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+</script>
+
+
+{% endblock %}

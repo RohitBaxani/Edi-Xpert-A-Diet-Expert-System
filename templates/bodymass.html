@@ -1,0 +1,142 @@
+{% extends 'basic.html' %}
+{% block body %}
+<style media="screen">
+		.main-container{
+			width: 550px;
+			background-color: #fff;
+			padding: 28px;
+			border-radius: 16px;
+		}
+		.inp-group{
+			margin-bottom: 24px;
+		}
+		h2{
+			font-size: 30px;
+			font-weight: 600;
+			margin-bottom:28px;
+		}
+		.text{
+            text-align: center;
+			margin-left: 150px;
+		}
+		{% comment %} #w, #h{
+			color: #222f3e;
+			text-align: left;
+			font-size: 20px;
+			font-weight: 200;
+			outline: none;
+			border: none;
+			background: none;
+			border-bottom: 1px solid #341f97;
+			width: 200px;
+		} {% endcomment %}
+			{% comment %} #w:focus, #h:focus{
+				border-bottom: 2px solid #341f97;
+				width: 300px;
+				transition: 0.5s;
+			} {% endcomment %}
+			#result{
+				color: #341f97;
+			}
+			#btn{
+				font-family: inherit;
+				margin-top: 10px;
+				border: none;
+				color: #fff;
+				background-image: linear-gradient(120deg,#ff6b6b, #5f27cd);
+				width: 150px;
+				padding: 10px;
+				border-radius: 30px;
+				outline: none;
+				cursor: pointer;
+			}
+			#btn:hover{
+				box-shadow: 1px 1px 10px #341f97;
+			}
+			#info{
+				font-size: 12px;
+				font-family: inherit;
+			}
+	</style>
+</head>
+
+<body>
+	{%load static%}
+    <section class="banner1" style=" position: relative;
+    width: 100%;
+    height: 105vh;
+    background-size: cover;
+    background-position: center;
+    padding: 200px 0 0 200px;
+	background-image: url({% static 'images/homebanner.jpg' %});">
+        <div class="main-container">
+            <h2>Body Fat% Calculator</h2>
+
+			<div class="sm:col-span-2 inp-group">
+				<label for="name" class="block mb-2 text-sm font-medium text-gray-900">Height</label>
+				<input type="text" name="height" id="h" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Enter height [m]">
+			</div>
+			<div class="sm:col-span-2 inp-group">
+				<label for="name" class="block mb-2 text-sm font-medium text-gray-900">Weight</label>
+				<input type="text" name="weight" id="w" placeholder="Enter Weight [kg]" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+			</div>
+			<div class="f-display inp-group">
+				<p class="text">Gender</p>
+				<input type="radio" name="gender" id="m" value="m">Male</input>
+				<input type="radio" name="gender" id="f" value="f">Female</input>
+			</div>
+			
+			<div class="sm:col-span-2 inp-group">
+				<label for="name" class="block mb-2 text-sm font-medium text-gray-900">Age</label>
+				<input type="text" name="age" id="a" placeholder="Enter age" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+			</div>
+            <p id="result"></p>
+            <button id="btn" class="primary-btn btn" onClick="BMI()">Calculate</button>
+			<button id="btn" class="primary-btn btn"><a href="/dietplanner" style="text-decoration:none; color:white;">Diet Planner</a></button>
+        </div>
+    </section>
+    
+
+
+    
+
+    
+
+    <script>
+        function BMI(){
+		var weight=document.getElementById('w').value;
+		var height=document.getElementById('h').value;
+		var age=document.getElementById('a').value;
+		var bfp=0.0;
+		var bmi=parseInt(weight)/(parseFloat(height)*parseFloat(height));
+
+		if (document.getElementById('f').checked)
+		{
+			bfp = (1.20 * parseFloat(bmi)) + (0.23 * parseInt(age)) - 5.4;
+		}
+
+		if (document.getElementById('m').checked)
+		{
+			bfp = (1.20 * parseFloat(bmi)) + (0.23 * parseInt(age)) - 16.2;
+		}
+
+		document.getElementById("result").innerHTML="Your Body Fat Percentage is "+bfp.toFixed(2)+"%";;
+		}
+    </script>
+  
+
+
+
+    <!-- Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    window.addEventListener("scroll", function(){
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+    })
+    </script>
+    
+
+
+
+{% endblock %}
